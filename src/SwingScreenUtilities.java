@@ -1,6 +1,7 @@
 import java.awt.*;
 
 public class SwingScreenUtilities {
+    public static double pct;
     /**
      * Gets a rectangle that is scaled to a percentage of available device screen
      * size,
@@ -31,7 +32,7 @@ public class SwingScreenUtilities {
         // sanity check for unreasonable percentage values
         if (pct < 0.1 || pct > 1)
             return screenSize;
-
+        SwingScreenUtilities.pct = pct;
         Dimension frameSize = getDimension(pct, multipleOf);
         if (wantSquare) {
             // make the frame size square

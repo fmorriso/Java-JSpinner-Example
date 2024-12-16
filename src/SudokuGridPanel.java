@@ -24,8 +24,8 @@ public class SudokuGridPanel extends JPanel {
         int groudId = 0;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                SudokuSpinner spinner = createSpinner();
-                spinner.setGroupId(groudId++);
+                SudokuSpinner spinner = createSpinner(groudId++);
+                //spinner.setGroupId(groudId++);
                 sudokuNumber[row][col] = spinner;
                 this.add(sudokuNumber[row][col]);
             }
@@ -39,9 +39,9 @@ public class SudokuGridPanel extends JPanel {
         this(3, 3);
     }
 
-    private SudokuSpinner createSpinner(){
+    private SudokuSpinner createSpinner(int groupId) {
         SpinnerListModel model = new SpinnerListModel(allowableSudokuNumbers);
-        SudokuSpinner spinner = new SudokuSpinner(model);
+        SudokuSpinner spinner = new SudokuSpinner(model, groupId, this);
         // Center the value in the JSpinner editor
         JComponent editor = spinner.getEditor();
         if (editor instanceof JSpinner.DefaultEditor) {
@@ -57,7 +57,9 @@ public class SudokuGridPanel extends JPanel {
         return spinner;
     }
 
-    public void updateSpinnerSelections(JSpinner spinner, int value) {
+    public void updateSpinnerSelections(SudokuSpinner spinner, int value) {
         //TODO: remove the value from the other sibling spinners
+        int groupId = spinner.getGroupId();
+
     }
 }

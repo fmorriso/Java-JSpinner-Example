@@ -21,8 +21,17 @@ public class SudokuSpinner extends JSpinner {
      */
     public void removeEligibleNumber(int valueToRemove) {
         SpinnerListModel model = (SpinnerListModel) this.getModel();
-        model.getList().remove(valueToRemove);
-        this.setModel(model);
+        List<?> currentList = model.getList();
+        if(currentList.contains(valueToRemove)) {
+            List<Integer> updatedList = new ArrayList<>();
+            for(Object o: currentList){
+                Integer i = (Integer) o;
+                if(i == valueToRemove) continue;
+                updatedList.add(i);
+            }
+            SpinnerListModel newModel = new SpinnerListModel(updatedList);
+            this.setModel(newModel);
+        }
     }
 
     public void addEligibleNumber(int valueToAdd) {

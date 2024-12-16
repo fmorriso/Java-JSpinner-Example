@@ -65,6 +65,5 @@ public class SudokuGridPanel extends JPanel {
                 sudokuSpinner.removeEligibleNumber(value);
             }
         }
-
     }
 }

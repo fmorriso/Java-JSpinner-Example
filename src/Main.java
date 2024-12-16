@@ -12,7 +12,7 @@ public class Main {
         // Define a set of non-consecutive numbers
         Integer[] numbers = {0, 1};
 
-        Dimension screenSize = SwingScreenUtilities.getScaledSize(0.5, 100, true);
+        Dimension screenSize = SwingScreenUtilities.getScaledSize(0.4, 100, true);
         SudokuFrame frame = new SudokuFrame(screenSize, title);
 
         // Create a simple JFrame to display the spinner

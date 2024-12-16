@@ -6,8 +6,6 @@ import javax.swing.SpinnerListModel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.GridLayout;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 public class SudokuGridPanel extends JPanel {
     private static final Integer[] allowableSudokuNumbers = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -58,8 +56,15 @@ public class SudokuGridPanel extends JPanel {
     }
 
     public void updateSpinnerSelections(SudokuSpinner spinner, int value) {
-        //TODO: remove the value from the other sibling spinners
+        // remove the value from the other sibling spinners
         int groupId = spinner.getGroupId();
+        // remove the value from the eligible list of the other spinners in the group
+        for (SudokuSpinner[] sudokuSpinnerRow : sudokuNumber) {
+            for (SudokuSpinner sudokuSpinner : sudokuSpinnerRow) {
+                if (sudokuSpinner.getGroupId() == groupId) continue;
+                sudokuSpinner.removeEligibleNumber(value);
+            }
+        }
 
     }
 }

@@ -6,10 +6,12 @@ import java.util.logging.Logger;
 public class Main {
 
     public static final Logger logger = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
 
         String title = String.format("Java Spinner Example using Java version %s", getJavaVersion());
         System.out.println(title);
+
         configureLogger();
         logger.info(title);
 
@@ -29,7 +31,7 @@ public class Main {
     private static void configureLogger() {
         try {
             // Create a FileHandler
-            FileHandler fileHandler = new FileHandler("application.log", true);
+            FileHandler fileHandler = new FileHandler("application-log.txt", true);
             fileHandler.setFormatter(new CustomLoggingFormatter()); // Use the custom formatter
 
             // Add the handler to the logger
